@@ -13,7 +13,7 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
-  font-family: var(--main-font);
+  font-family: var(--main-font), sans-serif;
   font-variation-settings: "wght" var(--text-weight);
   background-image: var(--page-background);
   background-size: cover;
@@ -41,7 +41,7 @@
 
 .header__logo,
 .header__title {
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), fantasy;
   font-weight: 400;
   line-height: 1;
 }
@@ -52,6 +52,7 @@
 
 .header__title {
   font-size: clamp(0.875rem, 0.6109rem + 1.1268vw, 1.4375rem);
+  text-transform: uppercase;
 }
 
 .main {
@@ -88,35 +89,35 @@
   object-position: center;
 }
 
-.card__image-first {
+.filter-soft {
   filter: brightness(0.96) contrast(1.04) saturate(0.92);
 }
 
-.card__image-second {
+.filter-muted {
   filter: brightness(0.95) contrast(1.05) saturate(0.88);
 }
 
-.card__image-third {
+.filter-dark {
   filter: brightness(0.9) contrast(1.12) saturate(0.82);
 }
 
-.card__image-fourth {
+.filter-light-sepia {
   filter: brightness(0.92) contrast(1.08) saturate(1.08) sepia(0.12);
 }
 
-.card__image-fifth {
+.filter-hue-shift {
   filter: brightness(0.88) contrast(1.06) saturate(0.9) hue-rotate(-8deg);
 }
 
-.card__image-sixth {
+.filter-dark-sepia {
   filter: brightness(0.82) contrast(1.1) saturate(0.75) sepia(0.22);
 }
 
-.card__image-seventh {
+.filter-accent-shift {
   filter: brightness(0.87) contrast(1.1) saturate(1.05) hue-rotate(-12deg);
 }
 
-.card__image-eighth {
+.filter-faded {
   filter: brightness(0.94) contrast(1.04) saturate(0.9);
 }
 
@@ -125,7 +126,7 @@
   inset-inline-end: 25px;
   inset-block-start: 25px;
   z-index: 1;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), fantasy;
   font-size: var(--button-text-size);
   line-height: 1;
   opacity: 0.5;
@@ -140,7 +141,7 @@
 
 @supports (
   (-webkit-text-stroke: 1px var(--label-stroke-color)) or
-  (text-stroke: 1px var(--label-stroke-color))
+    (text-stroke: 1px var(--label-stroke-color))
 ) {
   .card__label {
     text-shadow: none;
@@ -154,7 +155,7 @@
 }
 
 .card__text {
-  font-family: var(--main-font);
+  font-family: var(--main-font), sans-serif;
   font-size: var(--card-text-size);
   line-height: 21px;
   font-variation-settings: "wght" var(--text-weight);
@@ -197,6 +198,9 @@
   display: block;
   inline-size: 39px;
   block-size: 36px;
+}
+
+.heart {
   transform-origin: center;
 }
 
@@ -273,19 +277,13 @@
 
 .button__text,
 .card__label {
-  font-family: var(--accent-font);
-}
-
-.save-section {
-  display: flex;
-  justify-content: center;
-  margin-block-start: 50px;
+  font-family: var(--accent-font), fantasy;
 }
 
 .button {
   border: 2px solid var(--accent-color);
   background-color: var(--background-color);
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), fantasy;
   font-size: var(--button-text-size);
   line-height: 0.9;
   position: relative;
@@ -333,7 +331,8 @@
   align-items: center;
   gap: 8px;
   padding: 15px 20px;
-  margin-block-start: 4px;
+  margin-block-start: 54px;
+  margin-inline: auto;
 }
 
 .save-button__icon {
@@ -348,14 +347,15 @@
 }
 
 .dialog {
-  inline-size: 353px;
+  inline-size: 357px;
+  min-block-size: 195px;
   padding: 30px;
   border: 2px solid #000;
   box-sizing: border-box;
   position: fixed;
   inset: 0;
   margin: auto;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), fantasy;
 }
 
 .dialog::backdrop {
@@ -365,7 +365,7 @@
 .dialog__content {
   display: grid;
   grid-template-columns: 39px 1fr;
-  align-items: start;
+  align-items: center;
   column-gap: 20px;
 }
 
@@ -379,6 +379,10 @@
   font-family: inherit;
   font-size: 14px;
   line-height: 1.5;
+}
+
+.dialog__text,
+.dialog__button {
   text-transform: uppercase;
 }
 
@@ -391,6 +395,9 @@
   min-block-size: 38px;
   padding: 0;
   font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (width < 376px) {
@@ -402,26 +409,37 @@
   }
 
   .card__content {
-  padding-inline: 27px;
+    padding-inline: 27px;
   }
 
   .save-button {
-  box-sizing: border-box;
-  inline-size: 306px;
-  min-block-size: 84px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  padding: 15px 19px;
+    box-sizing: border-box;
+    inline-size: 306px;
+    min-block-size: 84px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 15px 19px;
   }
 
-.save-button .button__icon {
-  inline-size: 28px;
-  block-size: 28px;
+  .save-button .button__icon {
+    inline-size: 28px;
+    block-size: 28px;
   }
 
   .save-button .button__text {
-  white-space: nowrap;
+    white-space: nowrap;
+  }
+
+  .dialog {
+    inline-size: 345px;
+    min-block-size: 195px;
+    padding: 30px 40px;
+  }
+
+  .dialog__content {
+    inline-size: 261px;
+    grid-template-columns: 39px 202px;
   }
 }
